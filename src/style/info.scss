@@ -1,0 +1,35 @@
+.base-info {
+    font-size: 24px;
+    user-select: none;
+
+    .base-info__cursor-text {
+        position: relative;
+        display: inline-block;
+        margin-left: 4px;
+
+        &::after {
+            content: "";
+            width: 4px;
+            height: 24px;
+            background-color: #a71930;
+            position: absolute;
+            bottom: -4px;
+            animation: flash__cursor 800ms infinite;
+            border-radius: 2px;
+        }
+    }
+}
+
+@keyframes flash__cursor {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

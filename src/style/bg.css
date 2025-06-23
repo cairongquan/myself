@@ -1,0 +1,34 @@
+.bg-box {
+    position: relative;
+    height: calc(100vh - 3.2px);
+    overflow: hidden;
+}
+
+.bg-box:after {
+    content: '<';
+    color: #a71930;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    font-size: 120px;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bg-box:before {
+    content: '/>';
+    color: #a71930;
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    font-size: 120px;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.bg-box__child {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
