@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { ArrowRight } from 'lucide-react'
 
 const baseText = `Hello World!记录我的开发之路.如果你感兴趣欢迎留言.`
 
@@ -31,7 +32,10 @@ export default function MyInfo() {
   return (
     <div className="base-info">
       <p>{displayedText}<span className="base-info__cursor-text"></span></p>
-      <button className="confirm-btn">进入时间轴</button>
+      <button className="confirm-btn">
+        时间轴
+        <ArrowRight size={16} />
+      </button>
     </div>
   )
 }
