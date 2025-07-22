@@ -5,8 +5,8 @@ import './style/bg.css'
 const createImage = (canvasDom) => {
     const ctx = canvasDom.getContext("2d");
     // 设置画布尺寸
-    canvasDom.width = document.querySelector('.App').getBoundingClientRect().width;
-    canvasDom.height = document.querySelector('.App').getBoundingClientRect().height;
+    canvasDom.width = 1300;
+    canvasDom.height = 800;
     // 生成噪点
     const imageData = ctx.createImageData(canvasDom.width, canvasDom.height);
     for (let i = 0; i < imageData.data.length; i += 4) {

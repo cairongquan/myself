@@ -29,10 +29,13 @@ export default function MyInfo() {
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
+  const intoInfoView = () => {
+
+  }
   return (
     <div className="base-info">
       <p>{displayedText}<span className="base-info__cursor-text"></span></p>
-      <button className="confirm-btn">
+      <button className="confirm-btn" onclick={intoInfoView}>
         Timeline 2020~Now
         <ArrowRight size={16} />
       </button>

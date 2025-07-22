@@ -1,0 +1,21 @@
+* {
+  transition: background-color ease-in-out 120ms;
+}
+
+:root {
+  --main-color: #000;
+  --bg-color: #242424;
+  --text-color: #ffffff;
+  --border-color: #313134;
+  --btn-bg-color: #3a3a3a;
+  --btn-btn-hover-bg-color: #484848;
+}
+
+.light-theme {
+  --main-color: #ffffff;
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #00000014;
+  --btn-bg-color: #f2f2f2;
+  --btn-btn-hover-bg-color: #e5e5e5;
+}

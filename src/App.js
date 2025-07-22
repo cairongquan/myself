@@ -1,17 +1,17 @@
 import './App.scss';
 
-import Background from './bg'
+
 import MyInfo from './components/info'
+import Editor from './views/editor';
+
+import { Route, Routes } from 'react-router'
 
 function App() {
   return (
-    <div className="App">
-      <div className='out-app'>
-        <Background>
-          <MyInfo></MyInfo>
-        </Background>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<MyInfo />} />
+      <Route path="/editor" element={<Editor />} />
+    </Routes>
   );
 }
 
