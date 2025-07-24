@@ -1,11 +1,14 @@
 import express from "express";
+import ansiColors from "ansi-colors";
+import bodyParser from "body-parser";
 
 import connectDB from "./connectDB";
-import ansiColors from "ansi-colors";
+import artController from "./control/art";
 
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -13,6 +16,8 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
   next();
 });
+
+app.use("/art", artController);
 
 connectDB()
   .then(() => {
