@@ -5,7 +5,7 @@ import TagTable from '../components/tag-table'
 export default function Editor() {
   return <div className='editor-container'>
     <header className="editor-container__header">
-      <h1>Editor</h1>
+      <h1>Editor Dashboard 🥬</h1>
       <div className="header__button-group">
         <ChangeThemeBtn></ChangeThemeBtn>
         <button className="header__button">
