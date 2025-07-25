@@ -2,6 +2,7 @@
   transition: background-color ease-in-out 120ms;
 }
 
+
 :root {
   --main-color: #000;
   --bg-color: #242424;
@@ -9,6 +10,8 @@
   --border-color: #313134;
   --btn-bg-color: #3a3a3a;
   --btn-btn-hover-bg-color: #484848;
+  --table-border-color: rgba(84, 84, 84, .65);
+  --table-thead-bg-color: #1a1a1a;
 }
 
 .light-theme {
@@ -18,4 +21,6 @@
   --border-color: #00000014;
   --btn-bg-color: #f2f2f2;
   --btn-btn-hover-bg-color: #e5e5e5;
+  --table-border-color: rgba(60, 60, 60, .29);
+  --table-thead-bg-color: #f9f9f9;
 }

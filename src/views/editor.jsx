@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 import ChangeThemeBtn from '../components/change-theme';
+import TagTable from '../components/tag-table'
 
 export default function Editor() {
   return <div className='editor-container'>
@@ -12,5 +13,8 @@ export default function Editor() {
         </button>
       </div>
     </header>
+    <article className='editor-container__main'>
+      <TagTable></TagTable>
+    </article>
   </div>;
 }
