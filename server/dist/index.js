@@ -58,7 +58,7 @@ const TagSchema = new mongoose.Schema({
 var Tag = mongoose.model("Tag", TagSchema);
 
 const artController = express.Router();
-artController.post("/createTag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+artController.post("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name = "" } = req.body;
     if (!name || !name.trim().length) {
         return res.status(400).json({
@@ -81,7 +81,7 @@ artController.post("/createTag", (req, res) => __awaiter(void 0, void 0, void 0,
         });
     }
 }));
-artController.delete("/delTag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+artController.delete("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.query;
     try {
         if (!id) {
@@ -89,21 +89,76 @@ artController.delete("/delTag", (req, res) => __awaiter(void 0, void 0, void 0, 
         }
         const result = yield Tag.deleteOne({ _id: id });
         if (result.deletedCount === 0) {
-            return res.status(404).send({
+            res.status(400).send({
                 message: "标签未找到",
                 code: 0,
             });
         }
+        else {
+            res.status(200).send({
+                message: "标签删除成功",
+                code: 1,
+            });
+        }
     }
     catch (err) {
-        console.log(err);
         return res.status(400).send({
             message: "删除标签失败",
             code: 0,
         });
     }
 }));
-artController.get("/getTags", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+artController.get("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const filter = {};
+        if (req.query.name && req.query.name.trim()) {
+            filter.name = req.query.name.trim();
+        }
+        const tagsDbList = yield Tag.find(filter);
+        res.status(200).json({
+            code: 1,
+            message: "获取标签成功",
+            data: tagsDbList.map((tag) => {
+                var _a, _b, _c;
+                return ({
+                    name: tag.name,
+                    createDate: tag.createDate,
+                    id: (_c = (_b = (_a = tag._id) === null || _a === void 0 ? void 0 : _a.toString) === null || _b === void 0 ? void 0 : _b.call(_a)) !== null && _c !== void 0 ? _c : "",
+                });
+            }),
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            code: 0,
+            message: "获取标签失败",
+            error: error instanceof Error ? error.message : String(error),
+        });
+    }
+}));
+artController.put("/tag", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id, name } = req.body;
+    if (!id)
+        return res.status(400).send({ code: 0, message: "标签ID不能为空" });
+    if (!name || !name.trim().length) {
+        return res.status(400).json({
+            code: 0,
+            message: "请填写标签名称",
+        });
+    }
+    const updateDbResponse = yield Tag.findOneAndUpdate({ _id: id }, { name });
+    if (!updateDbResponse) {
+        res.status(400).send({
+            code: 0,
+            message: "标签未找到",
+        });
+    }
+    else {
+        res.status(200).send({
+            code: 1,
+            message: "标签更新成功",
+        });
+    }
 }));
 
 const app = express();
